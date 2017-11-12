@@ -1,9 +1,9 @@
 #lang racket
 
-(provide euler-one)
+(provide euler-1)
 
 ;; Problem 1
-(define (euler-one)
+(define (euler-1)
   (define (f sum x)
     (cond [(>= x 1000) sum]
           [(or (zero? (modulo x 3))

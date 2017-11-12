@@ -1,20 +1,19 @@
 #lang racket
 
-(provide euler-two)
+(provide euler-2)
 
 ;; Problem 2
-(define (euler-two)
+(define (euler-2)
   ; A stream of fibonacci numbers
   (define (fibs)
     (define (f cur prev)
-      (cons cur (λ () (f (+ prev cur) cur))))
-    (λ () (f 1 1)))
+      (stream* cur (f (+ prev cur) cur)))
+    (f 1 1))
 
   ; An implementation of foldl for streams that accepts a predicate
   (define (fold-while predicate proc acc a-stream )
-    (let* ([cell (a-stream)]
-           [head (car cell)]
-           [tail (cdr cell)])
+    (let ([head (stream-first a-stream)]
+          [tail (stream-rest a-stream)])
       (if (predicate acc head)
           (fold-while predicate proc (proc acc head) tail)
           acc)))
