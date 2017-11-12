@@ -2,7 +2,8 @@
 
 (require racket/trace)
 (require "src/1.rkt"
-         "src/2.rkt")
+         "src/2.rkt"
+         "src/3.rkt")
 
-(euler-2)
+(euler-3)
 
